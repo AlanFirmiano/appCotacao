@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Ações</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let item of list_acoes" >
+    <button ion-item *ngFor="let item of list_acoes" (click)="navigate(item)">
       {{ item.code }}
     </button>
   </ion-list>

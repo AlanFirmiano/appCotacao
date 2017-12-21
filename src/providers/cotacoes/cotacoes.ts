@@ -9,12 +9,14 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class CotacoesProvider {
+
   private url = "http://cotacoes.economia.uol.com.br/ws/asset/";
+
   constructor(public http: Http) {
     console.log('Hello CotacoesProvider Provider');
   }
 
-  getListCotacoes(){
-    return this.http.get(this.url+484+"/intraday?");
+  getListCotacoes(idt:number){
+    return this.http.get(this.url+idt+"/intraday?");
   }
 }

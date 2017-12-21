@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {CotacoesProvider} from "../../providers/cotacoes/cotacoes";
+import {AcoesProvider} from "../../providers/acoes/acoes";
 
 @Component({
   selector: 'page-contact',
@@ -9,18 +10,22 @@ import {CotacoesProvider} from "../../providers/cotacoes/cotacoes";
     CotacoesProvider
   ]
 })
-export class ContactPage {
+export class ContactPage{
   public list_cotacoes = new Array<any>();
+  public idt:number;
+  public name:string;
   constructor(
     public navCtrl : NavController,
     private navParams :NavParams,
-    private cotProvider: CotacoesProvider
+    private acoesProvider: AcoesProvider
   ) {
 
   }
 
   ionViewDidLoad() {
-    this.cotProvider.getListCotacoes().subscribe(
+    this.idt = this.navParams.get("idt");
+    this.name = this.navParams.get("name");
+    this.acoesProvider.getListCotacoes(this.idt).subscribe(
       res=>{
         const response = (res as any);
         const objeto = JSON.parse(response._body);

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AcoesProvider } from "../../providers/acoes/acoes";
 import {ContactPage} from "../contact/contact";
 import {CotacoesProvider} from "../../providers/cotacoes/cotacoes";
+import {on} from "@ionic/app-scripts/dist/util/events";
+import {objectAssign} from "@ionic/app-scripts";
 
 @Component({
   selector: 'page-home',
@@ -13,11 +15,12 @@ import {CotacoesProvider} from "../../providers/cotacoes/cotacoes";
 })
 export class HomePage {
   public list_acoes = new Array<any>();
+  public idt:number;
+  public name:string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private acoesProvider:AcoesProvider,
-    private cotacoesProvider:CotacoesProvider
+    private acoesProvider:AcoesProvider
   ){
 
   }
@@ -33,10 +36,11 @@ export class HomePage {
       }
     );
   }
-
-  goToContactPage(){
-      this.cotacoesProvider.getListCotacoes();
-      this.navCtrl.push(ContactPage);
+  navigate(objSelecionado){
+    this.navCtrl.push(ContactPage, {
+      idt: objSelecionado.idt,
+      name:objSelecionado.name
+    })
   }
 
 }

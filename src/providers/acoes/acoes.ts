@@ -18,4 +18,9 @@ export class AcoesProvider {
   getListAcoes(){
     return this.http.get(this.url+"stock/list");
   }
+
+  getListCotacoes(idt:number){
+    console.log(idt);
+    return this.http.get(this.url+idt+"/intraday?");
+  }
 }
