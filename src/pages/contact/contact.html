@@ -1,13 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{name}}
+      {{name}} - {{list_cotacoes.length}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <button ion-item *ngFor="let item of list_cotacoes">
-    {{item.price}}
-  </button>
+    <ion-card *ngFor="let item of list_cotacoes">
+      <ion-card-header>
+        {{item.price}}
+      </ion-card-header>
+      <ion-card-content>
+    <p>
+      Horário:{{item.date.valueOf()}}
+      Máximo:{{item.high}}
+      Minimo:{{item.low}}
+      Variação :{{item.var}} -
+      Variação %:{{item.varpct}}
+      Volume:{{item.vol}}
+    </p>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
