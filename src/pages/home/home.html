@@ -1,11 +1,10 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Ações</ion-title>
-  </ion-navbar>
+  <ion-toolbar color="dark">
+    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let item of list_acoes" (click)="navigate(item)">
       {{ item.code }}

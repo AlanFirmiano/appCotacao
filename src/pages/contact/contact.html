@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>
-      {{name}} - {{list_cotacoes.length}}
+      {{name}} - {{qtd}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,11 +13,13 @@
       </ion-card-header>
       <ion-card-content>
     <p>
-      Horário:{{item.date.valueOf()}}
-      Máximo:{{item.high}}
-      Minimo:{{item.low}}
+      Horário:{{item.date}}
+    </p>
+    <p>
+      Máximo:{{item.high}} -
+      Minimo:{{item.low}} -
       Variação :{{item.var}} -
-      Variação %:{{item.varpct}}
+      Variação %:{{item.varpct}} -
       Volume:{{item.vol}}
     </p>
         </ion-card-content>
