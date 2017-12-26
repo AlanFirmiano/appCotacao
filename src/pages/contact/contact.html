@@ -6,10 +6,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="back">
     <ion-card *ngFor="let item of list_cotacoes">
-      <ion-card-header>
-        {{item.price}}
+      <ion-card-header class="preco">
+        R$:{{item.price}}
       </ion-card-header>
       <ion-card-content>
     <p>
@@ -17,7 +17,9 @@
     </p>
     <p>
       Máximo:{{item.high}} -
-      Minimo:{{item.low}} -
+      Minimo:{{item.low}}
+    </p>
+    <p>
       Variação :{{item.var}} -
       Variação %:{{item.varpct}} -
       Volume:{{item.vol}}

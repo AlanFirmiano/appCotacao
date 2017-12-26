@@ -14,12 +14,12 @@ import {objectAssign} from "@ionic/app-scripts";
   ]
 })
 export class HomePage {
-  public list_acoes = new Array<any>();
 
+  public list_acoes = new Array<any>();
   public idt:number;
   public name:string;
-
   searchQuery: string = '';
+
   list = new Array<any>();
 
   constructor(
@@ -63,7 +63,9 @@ export class HomePage {
   navigate(objSelecionado){
     this.navCtrl.push(ContactPage, {
       idt: objSelecionado.idt,
-      name:objSelecionado.name
+      name:objSelecionado.name,
+      date:objSelecionado.date
+
     })
   }
 

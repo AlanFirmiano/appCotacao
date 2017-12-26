@@ -15,7 +15,6 @@ export class ContactPage{
   public list_cotacoes = new Array<any>();
   public idt:number;
   public name:string;
-  public data:string;
   public qtd:number;
 
   constructor(
@@ -30,11 +29,13 @@ export class ContactPage{
     if(this.list_cotacoes!=null){
       this.qtd = this.list_cotacoes.length;
     }
-
   }
+
+
   ionViewDidLoad() {
     this.idt = this.navParams.get("idt");
     this.name = this.navParams.get("name");
+
     this.acoesProvider.getListCotacoes(this.idt).subscribe(
       res=>{
         const response = (res as any);
