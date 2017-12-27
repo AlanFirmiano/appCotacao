@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AcoesProvider } from "../../providers/acoes/acoes";
-import {ContactPage} from "../contact/contact";
-import {CotacoesProvider} from "../../providers/cotacoes/cotacoes";
-import {on} from "@ionic/app-scripts/dist/util/events";
-import {objectAssign} from "@ionic/app-scripts";
-
+import { ContactPage } from "../contact/contact";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -45,7 +41,7 @@ export class HomePage {
       this.list_acoes = this.list_acoes.filter(
         (item) => {
         return (item.code.toLowerCase().indexOf(val.toLowerCase()) != -1);
-      })
+      });
     }
   }
   ionViewDidLoad() {
@@ -65,8 +61,7 @@ export class HomePage {
       idt: objSelecionado.idt,
       name:objSelecionado.name,
       date:objSelecionado.date
-
-    })
+    });
   }
 
 }
