@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams} from 'ionic-angular';
+import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import { AcoesProvider } from "../../providers/acoes/acoes";
 
 @Component({
@@ -15,13 +15,33 @@ export class ContactPage{
   public name:string;
   public qtd:number;
   public date:Date = new Date;
+  public loader;
+  public refresher;
+  public isRefreshing:boolean = false;
 
   constructor(
     public navCtrl : NavController,
     private navParams :NavParams,
-    private acoesProvider: AcoesProvider
+    private acoesProvider: AcoesProvider,
+    public loadingCtrl: LoadingController
   ) {
     this.atualizar();
+  }
+
+  doRefresh(refresher) {
+    this.refresher = refresher;
+    this.isRefreshing = true;
+    this.carregarCotacoes();
+  }
+  abrirCarregando() {
+    this.loader = this.loadingCtrl.create({
+      content: "Carregando Ações..."
+    });
+    this.loader.present();
+  }
+
+  fecharCarregando(){
+    this.loader.dismiss();
   }
 
   atualizar(){
@@ -35,9 +55,8 @@ export class ContactPage{
   }
 
 
-
-
-  ionViewDidEnter() {
+  carregarCotacoes(){
+    this.abrirCarregando();
     this.idt = this.navParams.get("idt");
     this.name = this.navParams.get("name");
 
@@ -45,14 +64,27 @@ export class ContactPage{
       res=>{
         const response = (res as any);
         const objeto = JSON.parse(response._body);
+
         this.list_cotacoes = objeto.data;
         this.atualizar();
+        this.fecharCarregando();
+        if(this.isRefreshing){
+          this.refresher.complete();
+          this.isRefreshing = false;
+        }
       },
       err=>{
         console.log(err);
+        this.fecharCarregando();
+        if(this.isRefreshing){
+          this.refresher.complete();
+          this.isRefreshing = false;
+        }
       }
     );
+  }
 
-
+  ionViewDidEnter() {
+    this.carregarCotacoes();
   }
 }

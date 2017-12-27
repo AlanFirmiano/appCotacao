@@ -5,9 +5,20 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <button ion-item *ngFor="let item of list_acoes" (click)="navigate(item)">
       {{ item.code }}
+      <ion-note item-start>
+        <ion-icon name="podium"></ion-icon>
+      </ion-note>
+
+      <ion-note item-end>
+        <ion-icon name="search"></ion-icon>
+      </ion-note>
     </button>
+
   </ion-list>
 </ion-content>

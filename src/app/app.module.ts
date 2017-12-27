@@ -13,6 +13,7 @@ import { AcoesProvider } from "../providers/acoes/acoes";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CotacoesProvider } from '../providers/cotacoes/cotacoes';
+import {IntroPage} from "../pages/intro/intro";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CotacoesProvider } from '../providers/cotacoes/cotacoes';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    IntroPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { CotacoesProvider } from '../providers/cotacoes/cotacoes';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    IntroPage
   ],
   providers: [
     StatusBar,

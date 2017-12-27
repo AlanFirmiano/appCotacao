@@ -1,12 +1,15 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>
-      {{name}} - {{qtd}}
+      <ion-icon name="search"></ion-icon> {{name}} - {{qtd}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="back">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
     <ion-card *ngFor="let item of list_cotacoes">
       <ion-card-header class="preco">
         R$:{{item.price}}

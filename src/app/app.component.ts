@@ -5,12 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import {HomePage} from "../pages/home/home";
+import {IntroPage} from "../pages/intro/intro";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+
+  rootPage:any = IntroPage;
+
   constructor(
     platform: Platform,
     statusBar: StatusBar,
