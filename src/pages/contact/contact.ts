@@ -39,12 +39,13 @@ export class ContactPage{
         const response = (res as any);
         const objeto = JSON.parse(response._body);
         this.list_cotacoes = objeto.data;
-        console.log(this.list_cotacoes);
         this.atualizar();
       },
       err=>{
         console.log(err);
       }
     );
+
+
   }
 }

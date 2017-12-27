@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AcoesProvider } from "../../providers/acoes/acoes";
 import { ContactPage } from "../contact/contact";
 @Component({
@@ -15,7 +15,6 @@ export class HomePage {
   public idt:number;
   public name:string;
   searchQuery: string = '';
-
   list = new Array<any>();
 
   constructor(
@@ -27,24 +26,6 @@ export class HomePage {
   }
 
   initializeItems() {
-      this.list = this.list_acoes;
-  }
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.list_acoes = this.list_acoes.filter(
-        (item) => {
-        return (item.code.toLowerCase().indexOf(val.toLowerCase()) != -1);
-      });
-    }
-  }
-  ionViewDidLoad() {
     this.acoesProvider.getListAcoes().subscribe(
       res=>{
         const response = (res as any);
@@ -55,6 +36,28 @@ export class HomePage {
         console.log(err);
       }
     );
+  }
+  public val = '';
+  getItems(ev: any) {
+    // Reset items back to all of the items
+
+    if(this.val == '') {
+      this.initializeItems();
+    }
+    // set val to the value of the searchbar
+    this.val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (this.val && this.val.trim() != '') {
+      this.list_acoes = this.list_acoes.filter(
+        (item) => {
+        return (item.code.toLowerCase().indexOf(this.val.toLowerCase()) != -1);
+      });
+    }
+
+  }
+  ionViewDidLoad() {
+    this.initializeItems();
   }
   navigate(objSelecionado){
     this.navCtrl.push(ContactPage, {

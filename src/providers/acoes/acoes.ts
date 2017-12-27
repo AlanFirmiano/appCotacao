@@ -27,7 +27,6 @@ export class AcoesProvider {
   }
 
   getListCotacoes(idt:number){
-    console.log(idt);
     return this.http.get(this.basepath+"/ws/asset/"+idt+"/intraday?");
   }
 }
