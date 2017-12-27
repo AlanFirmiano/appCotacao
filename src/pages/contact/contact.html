@@ -12,18 +12,18 @@
         R$:{{item.price}}
       </ion-card-header>
       <ion-card-content>
-    <p>
-      Horário:{{item.date}}
-    </p>
-    <p>
-      Máximo:{{item.high}} -
-      Minimo:{{item.low}}
-    </p>
-    <p>
-      Variação :{{item.var}} -
-      Variação %:{{item.varpct}} -
-      Volume:{{item.vol}}
-    </p>
-        </ion-card-content>
+        <p>
+          {{getDateTimeFromTimestamp(item.date)}}
+        </p>
+        <p>
+          Máximo:{{item.high}} -
+          Minimo:{{item.low}}
+        </p>
+        <p>
+          Variação :{{item.var}} -
+          Variação %:{{item.varpct}} -
+          Volume:{{item.vol}}
+        </p>
+      </ion-card-content>
     </ion-card>
 </ion-content>

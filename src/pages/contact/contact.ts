@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {AcoesProvider} from "../../providers/acoes/acoes";
+import { NavController, NavParams} from 'ionic-angular';
+import { AcoesProvider } from "../../providers/acoes/acoes";
 
 @Component({
   selector: 'page-contact',
@@ -14,6 +14,7 @@ export class ContactPage{
   public idt:number;
   public name:string;
   public qtd:number;
+  public date:Date = new Date;
 
   constructor(
     public navCtrl : NavController,
@@ -28,6 +29,12 @@ export class ContactPage{
       this.qtd = this.list_cotacoes.length;
     }
   }
+  getDateTimeFromTimestamp(unixTimeStamp) {
+    var date = new Date(unixTimeStamp);
+    return ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() + ' ' + ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+  }
+
+
 
 
   ionViewDidEnter() {
